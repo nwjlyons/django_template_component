@@ -180,6 +180,7 @@ class Form(Component):
 ### Usage
 
 ```html
+{% load slot_tags %}
 {% load component_tags %}
 
 
