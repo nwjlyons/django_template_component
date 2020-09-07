@@ -20,7 +20,8 @@ register = Library()
 
 @register.component
 class Button(Component):
-    pass
+    def get_context_data(self, filled_slots):
+        return {}
 ```
 
 `app/templates/components/button.html`
@@ -134,7 +135,7 @@ class Form(Component):
 `app/templates/components/form_field.html`
 
 ```html
-{% load bluepondcomponents_tags %}
+{% load component_tags %}
 <div class="field">
     {% if field.label %}
         <label for="{{ field.id_for_label }}">{{ field.label }}</label>
@@ -154,7 +155,7 @@ class Form(Component):
 
 ```html
 {% load slot_tags %}
-{% load bluepondcomponents_tags %}
+{% load component_tags %}
 <form action="{{ action }}" method="{{ method }}"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
 
 {% if csrf_token %}<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">{% endif %}
